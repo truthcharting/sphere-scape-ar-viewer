@@ -61,7 +61,25 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				/* Custom AR/VR colors */
+				cosmic: {
+					blue: 'hsl(var(--cosmic-blue))',
+					purple: 'hsl(var(--space-purple))',
+					cyan: 'hsl(var(--cyber-cyan))',
+					pink: 'hsl(var(--nebula-pink))',
+					white: 'hsl(var(--star-white))'
 				}
+			},
+			backgroundImage: {
+				'gradient-cosmic': 'var(--gradient-cosmic)',
+				'gradient-nebula': 'var(--gradient-nebula)',
+				'gradient-ar': 'var(--gradient-ar)'
+			},
+			boxShadow: {
+				'glow-primary': 'var(--glow-primary)',
+				'glow-accent': 'var(--glow-accent)',
+				'cosmic': 'var(--shadow-cosmic)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
