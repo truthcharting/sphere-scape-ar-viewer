@@ -22,13 +22,7 @@ function PhotosphereMesh({ imageUrl }: { imageUrl: string }) {
 }
 
 function LoadingFallback() {
-  return (
-    <div className="flex items-center justify-center h-full">
-      <div className="text-cosmic-cyan animate-pulse text-lg">
-        Loading immersive experience...
-      </div>
-    </div>
-  );
+  return null; // Canvas fallback must be null or Three.js objects
 }
 
 export function PhotosphereViewer({ imageUrl, isAR = false }: PhotosphereViewerProps) {
