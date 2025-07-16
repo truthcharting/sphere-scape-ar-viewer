@@ -1,8 +1,8 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sphere } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import { Suspense, useRef } from 'react';
-import { Mesh, BackSide } from 'three';
-import { useTexture } from '@react-three/drei';
+import { Mesh, BackSide, TextureLoader } from 'three';
+import { useLoader } from '@react-three/fiber';
 
 interface PhotosphereViewerProps {
   imageUrl: string;
@@ -11,12 +11,13 @@ interface PhotosphereViewerProps {
 
 function PhotosphereMesh({ imageUrl }: { imageUrl: string }) {
   const meshRef = useRef<Mesh>(null);
-  const texture = useTexture(imageUrl);
+  const texture = useLoader(TextureLoader, imageUrl);
 
   return (
-    <Sphere ref={meshRef} args={[500, 60, 40]}>
+    <mesh ref={meshRef}>
+      <sphereGeometry args={[500, 60, 40]} />
       <meshBasicMaterial map={texture} side={BackSide} />
-    </Sphere>
+    </mesh>
   );
 }
 
@@ -38,7 +39,7 @@ export function PhotosphereViewer({ imageUrl, isAR = false }: PhotosphereViewerP
         gl={{ antialias: true, alpha: isAR }}
         style={{ background: isAR ? 'transparent' : '#0f1419' }}
       >
-        <Suspense fallback={null}>
+        <Suspense fallback={<LoadingFallback />}>
           <PhotosphereMesh imageUrl={imageUrl} />
           <OrbitControls
             enableZoom={true}
